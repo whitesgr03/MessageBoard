@@ -16,7 +16,7 @@ const messages = [
 
 /* GET home page. */
 router.get("/", (req, res) => {
-	res.render("index", { title: "Express" });
+	res.render("index", { title: "Mini Messageboard", messages: messages });
 });
 
 module.exports = router;
