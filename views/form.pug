@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    form(methods="POST" action="/new")
+        div(class="author") Author:
+            input(type="text" name="author")
+
+        div(class="message") Message:
+            input(type="text" name="message")
+            
+        button(type="submit") Add message
