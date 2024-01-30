@@ -1,3 +1,5 @@
+/* normalize */
+@import url("https://necolas.github.io/normalize.css/latest/normalize.css");
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
