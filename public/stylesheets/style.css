@@ -22,16 +22,16 @@ ul {
 	row-gap: 2rem;
 }
 
-.message {
+ul .message {
 	display: flex;
 	align-items: center;
 }
 
-.message .index {
+ul .message .index {
 	margin-right: 1rem;
 }
 
-li {
+ul li {
 	width: 100%;
 	list-style: none;
 	border: 1px solid black;
