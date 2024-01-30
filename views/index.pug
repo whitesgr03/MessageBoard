@@ -1,13 +1,16 @@
 extends layout
 
 block content
-  h1= title
-  ul
-    each item, index in messages
-      div(class='message')
-        p(class='index')= index + 1 + '.'
-        li
-          p= 'UserName: ' + item.user
-          h3= item.text
-          p= item.added
+  div(class="messageBoard")
+      div(class="titleWrap")
+        h1= title
+        a(href="/new") Add new message
+      ul
+        each item, index in messages
+          div(class='message')
+            p(class='index')= index + 1 + '.'
+            li
+              p= 'UserName: ' + item.user
+              h3= item.text
+              p= item.added
 
