@@ -11,10 +11,27 @@
 }
 
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	padding: 50px;
 }
 
-a {
-  color: #00B7FF;
+ul {
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+}
+
+.message {
+	display: flex;
+	align-items: center;
+}
+
+.message .index {
+	margin-right: 1rem;
+}
+
+li {
+	width: 100%;
+	list-style: none;
+	border: 1px solid black;
+	padding: 10px;
 }
