@@ -1,10 +1,10 @@
 {
-	"name": "locallibrary",
+	"name": "messageboard",
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"start": "DEBUG=locallibrary:* node ./bin/www",
-		"watch": "DEBUG=locallibrary:* node --watch ./bin/www"
+		"start": "DEBUG=messageboard:* node ./bin/www",
+		"watch": "DEBUG=messageboard:* node --watch ./bin/www"
 	},
 	"dependencies": {
 		"cookie-parser": "~1.4.4",
