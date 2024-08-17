@@ -5,7 +5,9 @@ const databaseLog = debug("PostgreSQL");
 const { Pool } = pg;
 
 databaseLog("Connecting PostgreSQL...");
-const pool = new Pool();
+const pool = new Pool({
+	connectionString: process.env.DATABASE_URL,
+});
 pool.on("error", async err => {
 	databaseLog(`There has an Error, so the database is closed.`);
 	databaseLog("Connect error:");
