@@ -1,9 +1,16 @@
-const express = require("express");
+import express from "express";
+
+import * as messageControllers from "../controllers/messageController.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-	res.render("form");
-});
+router.use(express.urlencoded({ extended: false }));
 
-module.exports = router;
+router.get("/", messageControllers.messageList);
+
+router
+	.route("/create")
+	.get(messageControllers.messageCreateGet)
+	.post(messageControllers.messageCreatePost);
+
+export default router;
