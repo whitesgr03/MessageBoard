@@ -2,9 +2,13 @@
 	"name": "messageboard",
 	"version": "0.0.0",
 	"private": true,
+	"engines": {
+		"node": ">=20.10.0"
+	},
+	"type": "module",
 	"scripts": {
-		"start": "DEBUG=messageboard:* node ./bin/www",
-		"watch": "DEBUG=messageboard:* node --watch ./bin/www"
+		"start": "NODE_ENV=production node index",
+		"dev": "NODE_ENV=development node --env-file=.env --env-file=.env.development --watch index"
 	},
 	"dependencies": {
 		"cookie-parser": "~1.4.4",
