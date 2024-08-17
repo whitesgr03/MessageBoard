@@ -1,41 +1,51 @@
-const createError = require("http-errors");
-const express = require("express");
-const path = require("path");
-const cookieParser = require("cookie-parser");
-const logger = require("morgan");
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const indexRouter = require("./routes/index");
-const messageRouter = require("./routes/message");
+import express from "express";
+import createError from "http-errors";
+import morgan from "morgan";
+import debug from "debug";
+
+// routes
+import indexRouter from "./routes/index.js";
+import messageRouter from "./routes/message.js";
 
 const app = express();
+const errorLog = debug("HandleErrorRouter");
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const staticOptions = {
+	index: false,
+	maxAge: "1d",
+	redirect: false,
+};
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"), staticOptions));
 
+app.use(morgan("dev"));
+
+app.get("/favicon.ico", (req, res) => res.status(204));
 app.use("/", indexRouter);
-app.use("/new", messageRouter);
+app.use("/messages", messageRouter);
 
-// catch 404 and forward to error handler
+// Unknown routes handler
 app.use((req, res, next) => {
-	next(createError(404));
+	next(createError(404, "The endpoint you are looking for cannot be found."));
 });
 
-// error handler
+// Errors handler
 app.use((err, req, res, next) => {
-	// set locals, only providing error in development
-	res.locals.message = err.message;
-	res.locals.error = req.app.get("env") === "development" ? err : {};
+	errorLog(err);
 
-	// render the error page
-	res.status(err.status || 500);
-	res.render("error");
+	err.status ?? (err = createError(500));
+
+	res.render("error", {
+		message: err.message,
+	});
 });
 
-module.exports = app;
+export default app;
