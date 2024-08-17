@@ -1,14 +1,12 @@
 extends layout
 
 block content
-    div(class="formWrap")
-        form(method="POST" action="/new")
-            div(class="author") Author:
-                input(type="text" name="author")
-
-            div(class="message") Message:
-                input(type="text" name="message")
-                
+    div.formWrap
+        form(method="POST")
+            div.author Author:
+                input(type="text" name="username")
+            div.message Message:
+                input(type="text" name="content")
             div
-                a(href="/") Back to board 
                 button(type="submit") Add message
+                a(href="/") Back to board 
