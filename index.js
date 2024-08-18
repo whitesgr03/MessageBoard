@@ -1,7 +1,7 @@
 import os from "node:os";
 import debug from "debug";
 
-import { initialTables } from "./config/database.js";
+import handleSeeding from "./config/seed.js";
 import app from "./app.js";
 
 const serverLog = debug("Server");
@@ -9,7 +9,7 @@ const serverLog = debug("Server");
 const port = process.env.PORT || "3000";
 
 const handleServer = async () => {
-	await initialTables();
+	await handleSeeding();
 
 	const handleListening = async () => {
 		const IP_Address = os
