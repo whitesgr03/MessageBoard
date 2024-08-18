@@ -1,7 +1,7 @@
 import asyncHandler from "express-async-handler";
 import { format } from "date-fns";
 
-import { pool as db } from "../config/database.js";
+import db from "../config/database.js";
 
 const messageList = asyncHandler(async (req, res) => {
 	const query = {
