@@ -9,9 +9,9 @@ const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 });
 pool.on("error", async err => {
-	databaseLog(`There has an Error, so the database is closed.`);
 	databaseLog("Connect error:");
 	databaseLog(err);
+	databaseLog(`Database is closed.`);
 	await pool.end();
 	process.exit(1);
 });
