@@ -1,8 +1,8 @@
 import os from "node:os";
 import debug from "debug";
 
-import app from "./app.js";
 import { initialTables } from "./config/database.js";
+import app from "./app.js";
 
 const serverLog = debug("Server");
 
