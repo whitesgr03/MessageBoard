@@ -7,7 +7,7 @@
   },
   "type": "module",
   "scripts": {
-    "start": "NODE_ENV=production --env-file=.env node app",
+    "start": "NODE_ENV=production node app",
     "dev": "NODE_ENV=development node --env-file=.env --env-file=.env.development --watch app",
     "seed-dev": "node --env-file=.env --env-file=.env.development ./db/seed",
     "seed-prod": "node --env-file=.env --env-file=.env.production ./db/seed"
