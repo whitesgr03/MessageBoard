@@ -1,40 +1,32 @@
 import asyncHandler from "express-async-handler";
 import { format } from "date-fns";
 
-import db from "../config/database.js";
+import { query } from "../db/pool.js";
 
-const messageList = asyncHandler(async (req, res) => {
-	const query = {
-		text: "SELECT * FROM messages",
-	};
+export const getMessages = asyncHandler(async (req, res) => {
+  const { rows } = await query("SELECT * FROM messages");
 
-	const { rows } = await db.query(query);
+  const messages = rows.map((message) => ({
+    ...message,
+    created_at: format(new Date(message.created_at), "MM/dd/yyyy"),
+  }));
 
-	const messages = rows.map(message => ({
-		...message,
-		created_at: format(new Date(message.created_at), "MM/dd/yyyy"),
-	}));
-
-	res.render("index", {
-		messages,
-	});
+  res.render("index", {
+    messages,
+  });
 });
 
-const messageCreateGet = async (req, res) => {
-	res.render("form");
+export const getMessageForm = async (req, res) => {
+  res.render("form");
 };
 
-const messageCreatePost = asyncHandler(async (req, res) => {
-	const { content, username } = req.body;
+export const createMessage = asyncHandler(async (req, res) => {
+  const { content, username } = req.body;
 
-	const query = {
-		text: "INSERT INTO messages (content, username, created_at) VALUES ($1, $2, $3)",
-		values: [content, username, new Date()],
-	};
+  await query(
+    "INSERT INTO messages (content, username, created_at) VALUES ($1, $2, $3)",
+    [content, username, new Date()],
+  );
 
-	await db.query(query);
-
-	res.redirect("/");
+  res.redirect("/");
 });
-
-export { messageList, messageCreateGet, messageCreatePost };

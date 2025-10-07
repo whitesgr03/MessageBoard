@@ -1,8 +1,11 @@
 extends layout
 
+block links
+    link(rel='stylesheet', href='/stylesheets/form.css')
+
 block content
     div.formWrap
-        form(method="POST")
+        form(method="POST" action="/messages/create")
             div.author Author:
                 input(type="text" name="username")
             div.message Message:

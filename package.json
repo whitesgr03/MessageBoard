@@ -1,23 +1,29 @@
 {
-	"name": "messageboard",
-	"version": "0.0.0",
-	"private": true,
-	"engines": {
-		"node": ">=20.10.0"
-	},
-	"type": "module",
-	"scripts": {
-		"start": "NODE_ENV=production node index",
-		"dev": "NODE_ENV=development node --env-file=.env --env-file=.env.development --watch index"
-	},
-	"dependencies": {
-		"date-fns": "^3.6.0",
-		"debug": "~2.6.9",
-		"express": "~4.16.1",
-		"express-async-handler": "^1.2.0",
-		"http-errors": "~1.6.3",
-		"morgan": "~1.9.1",
-		"pg": "^8.12.0",
-		"pug": "2.0.0-beta11"
-	}
+  "name": "messageboard",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20.10.0"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "NODE_ENV=production node app",
+    "dev": "NODE_ENV=development node --env-file=.env --env-file=.env.development --watch app",
+    "seed-dev": "node --env-file=.env --env-file=.env.development ./db/seed",
+    "seed-prod": "node --env-file=.env --env-file=.env.production ./db/seed"
+  },
+  "dependencies": {
+    "date-fns": "^3.6.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-async-handler": "^1.2.0",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pg": "^8.12.0",
+    "pug": "2.0.0-beta11"
+  },
+  "devDependencies": {
+    "@prettier/plugin-pug": "^3.4.2",
+    "prettier": "^3.6.2"
+  }
 }

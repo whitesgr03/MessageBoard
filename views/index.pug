@@ -1,17 +1,24 @@
 extends layout
 
-block content
-    div.messageBoard
-        div.titleWrap
-            h1 Message Board
-            a(href="/messages/create") Add new message
-        ul
-            each message, index in messages
-                div.message
-                    p.index= `${index + 1}.`
-                    li
-                        div.top
-                            p= `Author: ${message.username}`
-                            p= message.created_at
-                        h3= message.content
+block links
+  link(rel="stylesheet", href="/stylesheets/index.css")
 
+block content
+  .messageBoard
+    .titleWrap
+      h1 Message Board
+      a(href="/messages/create") Add new message
+
+    if messages.length
+      ul
+        each message, index in messages
+          .message
+            p.index= `${index + 1}.`
+            li
+              .top
+                p= `Author: ${message.username}`
+                p= message.created_at
+              h3= message.content
+    else
+      div
+        p= "There are not messages."

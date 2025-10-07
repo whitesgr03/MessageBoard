@@ -1,0 +1,44 @@
+.messageBoard {
+	padding: 50px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.messageBoard ul {
+	display: flex;
+	flex-direction: column;
+	row-gap: 2rem;
+	flex: 1 1 100%;
+	overflow: scroll;
+	border: 1px solid black;
+	padding: 2rem;
+}
+
+.messageBoard ul .message {
+	display: flex;
+	align-items: center;
+}
+
+.messageBoard ul .message .index {
+	margin-right: 1rem;
+}
+
+.messageBoard ul li {
+	width: 100%;
+	list-style: none;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.messageBoard .titleWrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.messageBoard .top {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}

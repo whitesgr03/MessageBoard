@@ -1,7 +1,5 @@
 import express from "express";
 
-const router = express.Router();
+export const indexRouter = express.Router();
 
-router.get("/", (req, res) => res.redirect("/messages"));
-
-export default router;
+indexRouter.get("/", (req, res) => res.redirect("/messages"));

@@ -2,15 +2,11 @@ import express from "express";
 
 import * as messageControllers from "../controllers/messageController.js";
 
-const router = express.Router();
+export const messageRouter = express.Router();
 
-router.use(express.urlencoded({ extended: false }));
+messageRouter.get("/", messageControllers.getMessages);
 
-router.get("/", messageControllers.messageList);
-
-router
-	.route("/create")
-	.get(messageControllers.messageCreateGet)
-	.post(messageControllers.messageCreatePost);
-
-export default router;
+messageRouter
+  .route("/create")
+  .get(messageControllers.getMessageForm)
+  .post(messageControllers.createMessage);
